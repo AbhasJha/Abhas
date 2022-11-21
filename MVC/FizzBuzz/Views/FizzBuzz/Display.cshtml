@@ -1,0 +1,19 @@
+﻿@*@model IEnumerable<DisplayViewModel>*@
+@model PaginatedList<DisplayViewModel>
+
+@using (Html.BeginForm("Index", "FizzBuzz", FormMethod.Get))
+{
+<table>
+    <td>
+        @foreach (var outputData in Model)
+        {
+            @Html.Hidden(outputData.Data)
+            @Html.Hidden(outputData.Color)
+            <li style="color : @outputData.Color">@outputData.Data</li>
+        }
+    </td>
+
+</table>
+<br>
+    <input type="submit" value="New Input" />
+}
