@@ -7,7 +7,7 @@ namespace FizzBuzz.Services
         private readonly IList<IRule> rules;
         public FizzBuzzService()
         {
-            rules = new List<IRule> { new FizzBuzzRule(), new FizzRule(), new BuzzRule() };
+            rules = new List<IRule> { new FizzBuzzRule(new DayFirstChar()), new FizzRule(new DayFirstChar()), new BuzzRule(new DayFirstChar())};
         }
         List<DisplayViewModel> IFizzBuzzService.GetFizzBuzzNumbers(int input)
         {

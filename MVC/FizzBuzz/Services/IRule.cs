@@ -6,7 +6,6 @@ namespace FizzBuzz.Services
     {
         bool IsMatch(int input);
         DisplayViewModel Execute();
-        bool Any();
     }
 
 }

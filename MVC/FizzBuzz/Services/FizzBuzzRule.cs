@@ -6,15 +6,15 @@ namespace FizzBuzz.Services
 {
     public class FizzBuzzRule : IRule
     {
-        bool IRule.Any()
+        IDayFirstChar _dayFirstChar;
+        public FizzBuzzRule(IDayFirstChar dayFirstChar)
         {
-            throw new NotImplementedException();
+            _dayFirstChar = dayFirstChar;
         }
-
         DisplayViewModel IRule.Execute()
         {
             DisplayViewModel dataDiplay = new DisplayViewModel();
-            dataDiplay.Data = "FizzBuzz";
+            dataDiplay.Data = _dayFirstChar.GetChar("Fizz") + _dayFirstChar.GetChar("Buzz");
             dataDiplay.Color = "black";
             return dataDiplay;
         }

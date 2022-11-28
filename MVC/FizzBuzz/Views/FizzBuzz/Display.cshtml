@@ -1,19 +1,33 @@
 ﻿@*@model IEnumerable<DisplayViewModel>*@
 @model PaginatedList<DisplayViewModel>
 
-@using (Html.BeginForm("Index", "FizzBuzz", FormMethod.Get))
-{
+
 <table>
     <td>
         @foreach (var outputData in Model)
         {
-            @Html.Hidden(outputData.Data)
-            @Html.Hidden(outputData.Color)
             <li style="color : @outputData.Color">@outputData.Data</li>
         }
     </td>
 
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Display"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Display"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
 <br>
+@using (Html.BeginForm("Index", "FizzBuzz", FormMethod.Get))
+{
     <input type="submit" value="New Input" />
 }

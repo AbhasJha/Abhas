@@ -1,7 +1,12 @@
 ﻿using FizzBuzz.Models;
 using FizzBuzz.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.Net.Http.Json;
+using System.Security.Principal;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace FizzBuzz.Controllers
 {
@@ -16,31 +21,26 @@ namespace FizzBuzz.Controllers
 
         public IActionResult Index()
         {
-            return View(new FizzbuzzViewModel());     
+            return View(new FizzbuzzViewModel());
         }
-        [HttpGet]
-        public IActionResult Display()
-        {
-            return View("Index",new FizzbuzzViewModel());
-        }
-
         [HttpPost]
         public IActionResult Display(FizzbuzzViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View("Index",model);
+                return View("Index", model);
             }
-            List<DisplayViewModel> data= service.GetFizzBuzzNumbers(model.Input);
+            List<DisplayViewModel> data = service.GetFizzBuzzNumbers(model.Input);
+            HttpContext.Session.SetString("TotalData", JsonConvert.SerializeObject(data));
             int pageSize = 20;
-            ViewBag.TotalData = data;
-            return View(PaginatedList<DisplayViewModel>.Create(data,1, pageSize));
+            return View(PaginatedList<DisplayViewModel>.Create(data, 1, pageSize));
         }
-        [HttpPost]
-        public IActionResult PageIndex(List<DisplayViewModel> data, int PageIndex)
+        public IActionResult Display(int pageNumber = 1)
         {
+            string json = HttpContext.Session.GetString("TotalData");
+            List<DisplayViewModel> data = JsonConvert.DeserializeObject<List<DisplayViewModel>>(json);
             int pageSize = 20;
-            return View(PaginatedList<DisplayViewModel>.Create(data, PageIndex, pageSize));
+            return View(PaginatedList<DisplayViewModel>.Create(data, pageNumber, pageSize));
         }
     }
 }
