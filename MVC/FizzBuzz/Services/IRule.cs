@@ -1,11 +1,9 @@
-﻿using FizzBuzz.Models;
-
-namespace FizzBuzz.Services
+﻿namespace FizzBuzz.Services
 {
     public interface IRule
     {
         bool IsMatch(int input);
-        DisplayViewModel Execute();
+        string Execute();
     }
 
 }

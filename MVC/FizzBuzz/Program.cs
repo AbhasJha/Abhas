@@ -9,7 +9,6 @@ builder.Services.AddScoped<IRule, FizzBuzzRule>();
 builder.Services.AddScoped<IRule, FizzRule>();
 builder.Services.AddScoped<IRule, BuzzRule>();
 builder.Services.AddScoped<IFizzBuzzService, FizzBuzzService>();
-builder.Services.AddScoped<IDayFirstChar, DayFirstChar>();
 builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromMinutes(60);//You can set Time   
 });

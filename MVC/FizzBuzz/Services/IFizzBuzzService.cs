@@ -1,9 +1,7 @@
-﻿using FizzBuzz.Models;
-
-namespace FizzBuzz.Services
+﻿namespace FizzBuzz.Services
 {
     public interface IFizzBuzzService
     {
-        List<DisplayViewModel> GetFizzBuzzNumbers(int input);
+        List<string> GetFizzBuzzNumbers(int input);
     }
 }

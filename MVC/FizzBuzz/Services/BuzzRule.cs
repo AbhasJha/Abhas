@@ -1,24 +1,14 @@
-﻿using FizzBuzz.Models;
-
-namespace FizzBuzz.Services
+﻿namespace FizzBuzz.Services
 {
     public class BuzzRule : IRule
     {
-        IDayFirstChar _dayFirstChar;
-        public BuzzRule(IDayFirstChar dayFirstChar)
+
+        public string Execute()
         {
-            _dayFirstChar = dayFirstChar;
+            return "Buzz";
         }
 
-        DisplayViewModel IRule.Execute()
-        {
-            DisplayViewModel dataDiplay = new DisplayViewModel();
-            dataDiplay.Data = _dayFirstChar.GetChar("Buzz");
-            dataDiplay.Color = "green";
-            return dataDiplay;
-        }
-
-        bool IRule.IsMatch(int input)
+        public bool IsMatch(int input)
         {
             return (input % 5) == 0;
         }

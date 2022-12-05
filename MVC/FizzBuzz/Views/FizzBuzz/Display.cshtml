@@ -1,16 +1,36 @@
-﻿@*@model IEnumerable<DisplayViewModel>*@
-@model PaginatedList<DisplayViewModel>
+﻿@model PaginatedList<string>
 
 
 <table>
     <td>
         @foreach (var outputData in Model)
         {
-            <li style="color : @outputData.Color">@outputData.Data</li>
+            if (outputData.Equals("Buzz"))
+            {
+                <li style="color : blue">@GetChar(outputData)</li>
+            }
+            else if (outputData.Equals("Fizz"))
+            {
+                <li style="color : green">@GetChar(outputData)</li>
+            }
+            else
+            {
+                <li>@outputData</li>
+            }
         }
     </td>
 
 </table>
+
+@{
+    string GetChar(string input)
+    {
+        System.Text.StringBuilder strBuilder = new System.Text.StringBuilder(input);
+        strBuilder[0] = DateTime.Now.DayOfWeek.ToString()[0];
+        return strBuilder.ToString();
+    }
+
+}
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
