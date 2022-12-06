@@ -14,18 +14,24 @@ namespace FizzBuzz.Test.Controllers
         [Fact]
         public void WhetherModelsUpdateWithExpectedFizzBuzzNumber()
         {
+            //Arrange
+
             this.mockService = new Mock<IFizzBuzzService>();
             this.mockService.Setup(x=>x.GetFizzBuzzNumbers(It.IsAny<int>())).Returns(new
-                List<string>{"1"});
+                List<string> { "1", "2", "Fizz", "4", "Buzz" });
             var controller = new FizzBuzzController(this.mockService.Object);
 
-            var result = controller.Display(new FizzbuzzViewModel { Input = 1 });
-            
-            ViewResult output = result as ViewResult;
+            //Act
+
+            var result = controller.Display(new FizzbuzzViewModel { Input = 5 });
+
+            //Assert
+
+            ViewResult output = result as ViewResult;            
             Assert.Equal(output.ViewName, "Display");
             var modeldata = output.Model;
 
-            Assert.Equal(modeldata, new List<string>{ "1"} );
+            Assert.Equal(modeldata, new List<string>{ "1", "2", "Fizz", "4", "Buzz" });
             this.mockService.Verify(x => x.GetFizzBuzzNumbers(It.IsAny<int>()), Times.Once);
         }
     }
