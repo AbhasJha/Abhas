@@ -11,7 +11,7 @@ namespace FizzBuzz.Test.Services
     public class FizzRuleTest
     {
         [Fact]
-        public void Should_Return_True_when_number_is_divisible_by_Three()
+        public void ShouldReturnTrueWhenNumberIsDivisibleByThree()
         {
             //Arrange
 
@@ -20,11 +20,11 @@ namespace FizzBuzz.Test.Services
             //Assert
 
             Assert.True(fizzRule.IsMatch(3));
-            Assert.Equal("Fizz", fizzRule.Execute());
+            
         }
 
         [Fact]
-        public void Should_Return_True_when_number_is_not_divisible_by_Three()
+        public void ShouldReturnFalseWhenNumberIsNotDivisibleByThree()
         {
             //Arrange
 
@@ -32,8 +32,21 @@ namespace FizzBuzz.Test.Services
 
             //Assert
 
-            Assert.True(fizzRule.IsMatch(4));
-            Assert.Equal("Fizzs", fizzRule.Execute());
+            Assert.False(fizzRule.IsMatch(4));
+            
+        }
+
+        [Fact]
+        public void ShouldReturnFizz()
+        {
+            //Arrange
+
+            FizzBuzz.Services.FizzRule fizzRule = new FizzBuzz.Services.FizzRule();
+
+            //Assert
+
+
+            Assert.Equal("Fizz", fizzRule.Execute());
         }
     }
 }

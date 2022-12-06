@@ -3,7 +3,7 @@
     public class BuzzRuleTest
     {
         [Fact]
-        public void Should_Return_True_when_number_is_divisible_by_five()
+        public void ShouldReturnTrueWhenNumberIsDivisibleByFive()
         {
             //Arrange
 
@@ -12,11 +12,11 @@
             //Assert
 
             Assert.True(buzzRule.IsMatch(5));
-            Assert.Equal("Buzz", buzzRule.Execute());
+            
         }
 
         [Fact]
-        public void Should_Return_false_when_number_is_not_divisible_by_five()
+        public void ShouldReturnFalseWhenNumberIsNotDivisibleByFive()
         {
             //Arrange
 
@@ -24,8 +24,20 @@
 
             //Assert
 
-            Assert.True(buzzRule.IsMatch(6));
-            Assert.Equal("Buzzs", buzzRule.Execute());
+            Assert.False(buzzRule.IsMatch(6));
+            
+        }
+        [Fact]
+        public void ShouldReturnBuzz()
+        {
+            //Arrange
+
+            FizzBuzz.Services.BuzzRule buzzRule = new FizzBuzz.Services.BuzzRule();
+
+            //Assert
+
+            
+            Assert.Equal("Buzz", buzzRule.Execute());
         }
     }
 }
