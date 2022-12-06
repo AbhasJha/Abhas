@@ -1,4 +1,5 @@
-﻿namespace FizzBuzz.Test.Services
+﻿using FizzBuzz.Services;
+namespace FizzBuzz.Test.Services
 {
     public class BuzzRuleTest
     {
@@ -7,7 +8,7 @@
         {
             //Arrange
 
-            FizzBuzz.Services.BuzzRule buzzRule = new FizzBuzz.Services.BuzzRule();
+          BuzzRule buzzRule = new BuzzRule();
 
             //Assert
 
@@ -20,7 +21,7 @@
         {
             //Arrange
 
-            FizzBuzz.Services.BuzzRule buzzRule = new FizzBuzz.Services.BuzzRule();
+            BuzzRule buzzRule = new BuzzRule();
 
             //Assert
 
@@ -32,7 +33,7 @@
         {
             //Arrange
 
-            FizzBuzz.Services.BuzzRule buzzRule = new FizzBuzz.Services.BuzzRule();
+            BuzzRule buzzRule = new BuzzRule();
 
             //Assert
 

@@ -15,7 +15,7 @@ namespace FizzBuzz.Test.Services
         {
             //Arrange
 
-            FizzBuzz.Services.FizzRule fizzRule = new FizzBuzz.Services.FizzRule();
+            FizzRule fizzRule = new FizzRule();
 
             //Assert
 
@@ -28,7 +28,7 @@ namespace FizzBuzz.Test.Services
         {
             //Arrange
 
-            FizzBuzz.Services.FizzRule fizzRule = new FizzBuzz.Services.FizzRule();
+            FizzRule fizzRule = new FizzRule();
 
             //Assert
 
@@ -41,7 +41,7 @@ namespace FizzBuzz.Test.Services
         {
             //Arrange
 
-            FizzBuzz.Services.FizzRule fizzRule = new FizzBuzz.Services.FizzRule();
+            FizzRule fizzRule = new FizzRule();
 
             //Assert
 
