@@ -1,5 +1,4 @@
 ﻿using FizzBuzz.Services;
-
 namespace FizzBuzz.Test.Services
 {
     public class FizzBuzzRuleTest 
@@ -8,51 +7,42 @@ namespace FizzBuzz.Test.Services
         public void ShouldReturnTrueWhenNumberIsNotDivisibleByThreeAndFive()
         {
             //Arrange
-
             FizzBuzzRule fizzBuzzRule = new FizzBuzzRule();
-
+            //Act
+            var result = fizzBuzzRule.IsMatch(15);
             //Assert
-
-            Assert.True(fizzBuzzRule.IsMatch(15));
-           
+            Assert.True(result);
         }
 
         [Fact]
         public void ShouldReturnFalseWhenNumberIsNotDivisibleByThreeAndFive()
         {
             //Arrange
-
             FizzBuzzRule fizzBuzzRule = new FizzBuzzRule();
-
+            //Act
+            var result = fizzBuzzRule.IsMatch(13);
             //Assert
-
-            Assert.False(fizzBuzzRule.IsMatch(13));
-           
+            Assert.False(result);    
         }
-
-        [Fact]
+       [Fact]
         public void ShouldReturnFizzBuzzWhenDayIsNotWednesday()
         {
             //Arrange
-
            FizzBuzzRule fizzBuzzRule = new FizzBuzzRule();
-
+            //Act
+            var result = fizzBuzzRule.Execute(false);
             //Assert
-
-
-            Assert.Equal("FizzBuzz", fizzBuzzRule.Execute(false));
+            Assert.Equal("FizzBuzz", result);
         }
         [Fact]
         public void ShouldReturnWizzWuzzWhenDayIsWednesday()
         {
             //Arrange
-
             FizzBuzzRule fizzBuzzRule = new FizzBuzzRule();
-
+            //Act
+            var result = fizzBuzzRule.Execute(true);
             //Assert
-
-
-            Assert.Equal("WizzWuzz", fizzBuzzRule.Execute(true));
+            Assert.Equal("WizzWuzz", result);
         }
     }
 }
