@@ -5,12 +5,7 @@
        
         public string Execute(bool isWednesday)
         {
-            
-            if (isWednesday)
-                return "Wizz";
-            else
-                return "Fizz";
-            
+            return isWednesday ? "Wizz" : "Fizz";
         }
 
        public bool IsMatch(int input)
