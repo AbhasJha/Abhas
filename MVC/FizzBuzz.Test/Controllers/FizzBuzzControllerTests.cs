@@ -21,7 +21,7 @@ namespace FizzBuzz.Test.Controllers
                 List<string> { "1", "2", "Fizz", "4", "Buzz" });
             var controller = new FizzBuzzController(this.mockService.Object);
 
-            //Act
+            //Act 
 
             var result = controller.Display(new FizzbuzzViewModel { Input = 5 });
 
