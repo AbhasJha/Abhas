@@ -14,51 +14,42 @@ namespace FizzBuzz.Test.Services
         public void ShouldReturnTrueWhenNumberIsDivisibleByThree()
         {
             //Arrange
-
             FizzRule fizzRule = new FizzRule();
-
+            //Act
+            var result = fizzRule.IsMatch(3);
             //Assert
-
-            Assert.True(fizzRule.IsMatch(3));
-            
+            Assert.True(result);
         }
-
         [Fact]
         public void ShouldReturnFalseWhenNumberIsNotDivisibleByThree()
         {
             //Arrange
-
             FizzRule fizzRule = new FizzRule();
-
+            //Act
+            var result = fizzRule.IsMatch(4);
             //Assert
-
-            Assert.False(fizzRule.IsMatch(4));
-            
+            Assert.False(result);
         }
 
         [Fact]
         public void ShouldReturnFizzWhenDayIsNotWednesday()
         {
             //Arrange
-
             FizzRule fizzRule = new FizzRule();
-
+            //Act
+            var result = fizzRule.Execute(false);
             //Assert
-
-
-            Assert.Equal("Fizz", fizzRule.Execute(false));
+            Assert.Equal("Fizz", result);
         }
         [Fact]
         public void ShouldReturnWizzWhenDayIsWednesday()
         {
             //Arrange
-
             FizzRule fizzRule = new FizzRule();
-
+            //Act
+            var result= fizzRule.Execute(true);
             //Assert
-
-
-            Assert.Equal("Wizz", fizzRule.Execute(true));
+            Assert.Equal("Wizz", result);
         }
     }
 }
