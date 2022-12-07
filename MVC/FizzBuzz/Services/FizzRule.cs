@@ -2,9 +2,15 @@
 {
     public class FizzRule : IRule
     {
-       public string Execute()
+       
+        public string Execute(bool isWednesday)
         {
-            return "Fizz";
+            
+            if (isWednesday)
+                return "Wizz";
+            else
+                return "Fizz";
+            
         }
 
        public bool IsMatch(int input)

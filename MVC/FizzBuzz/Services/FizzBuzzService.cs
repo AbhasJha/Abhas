@@ -3,20 +3,27 @@
     public class FizzBuzzService : IFizzBuzzService
     {
         private readonly IList<IRule> rules;
-        public FizzBuzzService()
+        private readonly ICheckWeekDay _checkWeekDay;
+
+        
+        public FizzBuzzService( ICheckWeekDay checkWeekDay)
         {
-            rules = new List<IRule> { new FizzBuzzRule(), new FizzRule(), new BuzzRule()};
+            //this.rules = rules;
+            _checkWeekDay = checkWeekDay;
+             rules = new List<IRule> { new FizzBuzzRule(), new FizzRule(), new BuzzRule()};
         }
-        List<string> IFizzBuzzService.GetFizzBuzzNumbers(int input)
+       public List<string> GetFizzBuzzNumbers(int input)
         {
-            List<String> dataDiplay = new List<string>();
+
+            bool isWednesday = _checkWeekDay.WeekDayWednesdayOrNot();
+            List<String> dataDisplay = new List<string>();
             for (var number = 1; number <= input; number++)
             {
                 var applicableRules = rules.FirstOrDefault(x => x.IsMatch(number));
-                var fizzBuzzNumber = applicableRules == null ? number.ToString() : applicableRules.Execute();
-                dataDiplay.Add(fizzBuzzNumber);
+                var fizzBuzzNumber = applicableRules == null ? number.ToString() : applicableRules.Execute(isWednesday);
+                dataDisplay.Add(fizzBuzzNumber);
             }
-            return dataDiplay;
+            return dataDisplay;
         }
     }
 }

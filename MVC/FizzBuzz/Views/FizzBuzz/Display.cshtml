@@ -5,13 +5,13 @@
     <td>
         @foreach (var outputData in Model)
         {
-            if (outputData.Equals("Buzz"))
+            if (outputData.Equals("Buzz") || outputData.Equals("Wuzz"))
             {
-                <li style="color : blue">@GetChar(outputData)</li>
+                <li style="color : blue">@outputData</li>
             }
-            else if (outputData.Equals("Fizz"))
+            else if (outputData.Equals("Fizz") || outputData.Equals("Wizz"))
             {
-                <li style="color : green">@GetChar(outputData)</li>
+                <li style="color : green">@outputData</li>
             }
             else
             {
@@ -22,15 +22,7 @@
 
 </table>
 
-@{
-    string GetChar(string input)
-    {
-        System.Text.StringBuilder strBuilder = new System.Text.StringBuilder(input);
-        strBuilder[0] = DateTime.Now.DayOfWeek.ToString()[0];
-        return strBuilder.ToString();
-    }
 
-}
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";

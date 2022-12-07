@@ -8,7 +8,7 @@ namespace FizzBuzz.Test.Services
         {
             //Arrange
 
-          BuzzRule buzzRule = new BuzzRule();
+            BuzzRule buzzRule = new BuzzRule();
 
             //Assert
 
@@ -29,7 +29,7 @@ namespace FizzBuzz.Test.Services
             
         }
         [Fact]
-        public void ShouldReturnBuzz()
+        public void ShouldReturnBuzzWhenDayIsNotWednesday()
         {
             //Arrange
 
@@ -38,7 +38,19 @@ namespace FizzBuzz.Test.Services
             //Assert
 
             
-            Assert.Equal("Buzz", buzzRule.Execute());
+            Assert.Equal("Buzz", buzzRule.Execute(false));
+        }
+        [Fact]
+        public void ShouldReturnWuzzWhenDayIsWednesday()
+        {
+            //Arrange
+
+            BuzzRule buzzRule = new BuzzRule();
+
+            //Assert
+
+
+            Assert.Equal("Wuzz", buzzRule.Execute(true));
         }
     }
 }

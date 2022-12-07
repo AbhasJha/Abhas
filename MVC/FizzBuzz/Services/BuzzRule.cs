@@ -2,10 +2,13 @@
 {
     public class BuzzRule : IRule
     {
-
-        public string Execute()
+       
+        public string Execute(bool isWednesday)
         {
-            return "Buzz";
+            if (isWednesday)
+                return "Wuzz";
+            else
+                return "Buzz";
         }
 
         public bool IsMatch(int input)

@@ -3,7 +3,8 @@
     public interface IRule
     {
         bool IsMatch(int input);
-        string Execute();
+        string Execute(bool isWednesday);
+        
     }
 
 }
