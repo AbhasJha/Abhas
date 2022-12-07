@@ -1,27 +1,14 @@
-﻿@model PaginatedList<string>
+﻿
+
+<link href="~/css/fizzbuzz.css" rel="stylesheet" />
 
 
-<table>
-    <td>
-        @foreach (var outputData in Model)
-        {
-            if (outputData.Equals("Buzz") || outputData.Equals("Wuzz"))
-            {
-                <li style="color : blue">@outputData</li>
-            }
-            else if (outputData.Equals("Fizz") || outputData.Equals("Wizz"))
-            {
-                <li style="color : green">@outputData</li>
-            }
-            else
-            {
-                <li>@outputData</li>
-            }
-        }
-    </td>
+@model PaginatedList<string>
 
-</table>
-
+@foreach (var outputData in Model)
+{
+    <div class="@outputData">@outputData</div>
+}
 
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
