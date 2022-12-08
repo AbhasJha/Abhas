@@ -1,10 +1,8 @@
 ﻿
-
 <link href="~/css/fizzbuzz.css" rel="stylesheet" />
 
-
 @model PaginatedList<string>
-
+@Html.AntiForgeryToken()
 @foreach (var outputData in Model)
 {
     <div class="@outputData">@outputData</div>

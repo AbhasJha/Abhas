@@ -7,6 +7,7 @@ namespace FizzBuzz.Controllers
 {
     public class FizzBuzzController : Controller
     {
+        public static int pageSize = 20;
         private readonly IFizzBuzzService service;
 
         public FizzBuzzController(IFizzBuzzService service)
@@ -19,6 +20,7 @@ namespace FizzBuzz.Controllers
             return View(new FizzbuzzViewModel());
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Display(FizzbuzzViewModel model)
         {
             if (!ModelState.IsValid)
@@ -30,14 +32,14 @@ namespace FizzBuzz.Controllers
             if(HttpContext != null)
             HttpContext.Session.SetString("TotalData", JsonConvert.SerializeObject(data));
 
-            int pageSize = 20;
             return View("Display",PaginatedList<string>.Create(data, 1, pageSize));
+            
         }
         public IActionResult Display(int pageNumber = 1)
         {
             string json = HttpContext.Session.GetString("TotalData");
             var data = JsonConvert.DeserializeObject<List<string>>(json);
-            int pageSize = 20;
+
             return View("Display" ,PaginatedList<string>.Create(data, pageNumber, pageSize));
         }
     }
