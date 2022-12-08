@@ -3,19 +3,19 @@
     public class FizzBuzzService : IFizzBuzzService
     {
         private readonly IList<IRule> rules;
-        private readonly ICheckWeekDay _checkWeekDay;
+        private readonly IWeekdayverfier weekdayverfier;
 
         
-        public FizzBuzzService( ICheckWeekDay checkWeekDay)
+        public FizzBuzzService(IWeekdayverfier weekdayverfier)
         {
             //this.rules = rules;
-            _checkWeekDay = checkWeekDay;
-             rules = new List<IRule> { new FizzBuzzRule(), new FizzRule(), new BuzzRule()};
+            this.weekdayverfier = weekdayverfier;
+            rules = new List<IRule> { new FizzBuzzRule(), new FizzRule(), new BuzzRule()};
         }
        public List<string> GetFizzBuzzNumbers(int input)
         {
 
-            bool isWednesday = _checkWeekDay.WeekDayWednesdayOrNot();
+            bool isWednesday = weekdayverfier.IsWednesday();
             List<String> dataDisplay = new List<string>();
             for (var number = 1; number <= input; number++)
             {

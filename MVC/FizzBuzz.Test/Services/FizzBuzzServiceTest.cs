@@ -14,17 +14,17 @@ namespace FizzBuzz.Test.Services
     
     public class FizzBuzzServiceTest
     {
-        private Mock<ICheckWeekDay> _CheckWeekDay;
+        private Mock<IWeekdayverfier> weekdayverfier;
 
         [Fact]
         public void ShouldReturnFizzBuzzWhenDayIsNotWednesday()
         {
             //Arrange
-            _CheckWeekDay = new Mock<ICheckWeekDay>();
-            _CheckWeekDay.Setup(q => q.WeekDayWednesdayOrNot()).Returns(false);
+            weekdayverfier = new Mock<IWeekdayverfier>();
+            weekdayverfier.Setup(q => q.IsWednesday()).Returns(false);
 
             //Act
-            var fizzbuzzservice = new FizzBuzzService( _CheckWeekDay.Object);   
+            var fizzbuzzservice = new FizzBuzzService(weekdayverfier.Object);   
             var result= fizzbuzzservice.GetFizzBuzzNumbers(10);
 
             //Assert
@@ -37,11 +37,11 @@ namespace FizzBuzz.Test.Services
         public void ShouldReturnWizzWuzzWhenDayIsNotWednesday()
         {
             //Arrange
-            _CheckWeekDay = new Mock<ICheckWeekDay>();
-            _CheckWeekDay.Setup(q => q.WeekDayWednesdayOrNot()).Returns(true);
+            weekdayverfier = new Mock<IWeekdayverfier>();
+            weekdayverfier.Setup(q => q.IsWednesday()).Returns(true);
 
             //Act
-            var fizzbuzzservice = new FizzBuzzService(_CheckWeekDay.Object);
+            var fizzbuzzservice = new FizzBuzzService(weekdayverfier.Object);
             var result = fizzbuzzservice.GetFizzBuzzNumbers(10);
 
             //Assert
