@@ -15,9 +15,6 @@ builder.Services.AddScoped<IWeekdayverfier, Weekdayverfier>();
 builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromMinutes(60);//You can set Time   
 });
-//builder.RegisterType<Weekdayverfier>()
-//       .As<IWeekdayverfier>()
-//       .WithParameter("connectionString", "myPrettyLocalhost:6379");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
