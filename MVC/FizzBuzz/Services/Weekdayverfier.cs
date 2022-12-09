@@ -2,13 +2,19 @@
 {
     public class Weekdayverfier : IWeekdayverfier
     {
+        //private readonly string today;
+        //public Weekdayverfier(string today)
+        //{
+        //    this.today = today;
+        //}
+
         public bool IsWednesday()
         {
-            //return (currentday=="Wednesday") ? true : false;
-            if (DateTime.Now.DayOfWeek.ToString() == "Wednesday")
-                return true;
-            else
-                return false;
+            return true;// (currentday=="Wednesday") ? true : false;
+            //if (today == "Wednesday")
+            //    return true;
+            //else
+            //    return false;
 
         }
     }
