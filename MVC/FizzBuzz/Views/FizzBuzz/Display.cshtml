@@ -1,28 +1,30 @@
 ﻿
 <link href="~/css/fizzbuzz.css" rel="stylesheet" />
 
-@model PaginatedList<string>
+
+@model FizzbuzzViewModel
 @Html.AntiForgeryToken()
-@foreach (var outputData in Model)
+@foreach (var outputData in Model.PageFizzBuzzList)
 {
     <div class="@outputData">@outputData</div>
 }
 
 @{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    var prevDisabled = !Model.PageFizzBuzzList.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.PageFizzBuzzList.HasNextPage ? "disabled" : "";
 }
 
 <a asp-action="Display"
-   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-pageNumber="@(Model.PageFizzBuzzList.PageNumber - 1)"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
 <a asp-action="Display"
-   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-pageNumber="@(Model.PageFizzBuzzList.PageNumber + 1)"
    class="btn btn-default @nextDisabled">
     Next
 </a>
+
 <br>
 @using (Html.BeginForm("Index", "FizzBuzz", FormMethod.Get))
 {
