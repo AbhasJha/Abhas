@@ -3,10 +3,10 @@
     public class FizzBuzzService : IFizzBuzzService
     {
         private readonly IList<IRule> rules;
-        private readonly IWeekdayverfier weekdayverfier;
+        private readonly IWeekdayVerfier weekdayverfier;
 
         
-        public FizzBuzzService(IWeekdayverfier weekdayverfier)
+        public FizzBuzzService(IWeekdayVerfier weekdayverfier)
         {
             //this.rules = rules;
             this.weekdayverfier = weekdayverfier;

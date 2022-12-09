@@ -1,6 +1,6 @@
 ﻿namespace FizzBuzz.Services
 {
-    public class Weekdayverfier : IWeekdayverfier
+    public class WeekdayVerfier : IWeekdayVerfier
     {
        
         public bool IsWednesday()
