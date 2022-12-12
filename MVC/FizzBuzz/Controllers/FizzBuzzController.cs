@@ -28,17 +28,12 @@ namespace FizzBuzz.Controllers
             {
                 return View("Index", model);
             }
-            //List<String> data = service.GetFizzBuzzNumbers(model.Input);
+            List<String> data = service.GetFizzBuzzNumbers(model.Input);
 
-            //if (HttpContext != null)
-            //    HttpContext.Session.SetString("TotalData", JsonConvert.SerializeObject(data));
+            if (HttpContext != null)
+                HttpContext.Session.SetString("TotalData", JsonConvert.SerializeObject(data));
 
-            //return View("Display", PaginatedList<string>.Create(data, 1, pageSize));
-
-            //var pageIndex = model.Page ? Convert.ToInt32(model.Page) : 1;
-            var fizzBuzzresult = service.GetFizzBuzzNumbers(model.Input);
-            model.PageFizzBuzzList =(PagedList<string>) fizzBuzzresult.ToPagedList(model.Page, pageSize);
-            return this.View("Display", model);
+            return View("Display", PaginatedList<string>.Create(data, 1, pageSize));
 
         }
         public IActionResult Display(int pageNumber = 1)

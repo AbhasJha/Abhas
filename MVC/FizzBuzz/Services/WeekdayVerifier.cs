@@ -4,18 +4,14 @@ namespace FizzBuzz.Services
 {
     public class WeekdayVerifier : IWeekdayVerifier
     {
-        private readonly string day;
-        public WeekdayVerifier(string day)
+        private readonly string currentDay = string.Empty;
+        public WeekdayVerifier(string currentDay)
         {
-            this.day= day;
+            this.currentDay = currentDay;
         }
         public bool IsWednesday()
         {
-            return Enum.IsDefined(typeof(Matchday), day);
-        }
-        enum Matchday
-        {
-            Wednesday
+            return DayOfWeek.Wednesday.ToString().Equals(this.currentDay);
         }
     }
 }
