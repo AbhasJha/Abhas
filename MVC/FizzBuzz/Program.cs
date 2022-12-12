@@ -10,7 +10,7 @@ builder.Services.AddScoped<IRule, FizzBuzzRule>();
 builder.Services.AddScoped<IRule, FizzRule>();
 builder.Services.AddScoped<IRule, BuzzRule>();
 builder.Services.AddScoped<IWeekdayVerifier>(x => new WeekdayVerifier(DateTime.UtcNow.DayOfWeek.ToString()));
-builder.Services.AddScoped<IFizzBuzzService>(x => new FizzBuzzService(x.GetService<IWeekdayVerifier>()));
+builder.Services.AddScoped<IFizzBuzzService>(x => new FizzBuzzService(x.GetService<IWeekdayVerifier>(),x.GetService<IEnumerable<IRule>>()));
 
 builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromMinutes(60);//You can set Time   

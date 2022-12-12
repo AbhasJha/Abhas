@@ -2,15 +2,14 @@
 {
     public class FizzBuzzService : IFizzBuzzService
     {
-        private readonly IList<IRule> rules;
+        private readonly IEnumerable<IRule> rules;
         private readonly IWeekdayVerifier weekdayverifier;
 
         
-        public FizzBuzzService(IWeekdayVerifier weekdayverfier)
+        public FizzBuzzService(IWeekdayVerifier weekdayverfier, IEnumerable<IRule> rules)
         {
-            //this.rules = rules;
+            this.rules = rules;
             this.weekdayverifier = weekdayverfier;
-            rules = new List<IRule> { new FizzBuzzRule(), new FizzRule(), new BuzzRule()};
         }
        public List<string> GetFizzBuzzNumbers(int input)
         {
