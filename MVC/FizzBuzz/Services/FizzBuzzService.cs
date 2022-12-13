@@ -6,10 +6,10 @@
         private readonly IWeekdayVerifier weekdayverifier;
 
         
-        public FizzBuzzService(IWeekdayVerifier weekdayverfier, IEnumerable<IRule> rules)
+        public FizzBuzzService(IWeekdayVerifier weekdayverifier, IEnumerable<IRule> rules)
         {
             this.rules = rules;
-            this.weekdayverifier = weekdayverfier;
+            this.weekdayverifier = weekdayverifier;
         }
        public List<string> GetFizzBuzzNumbers(int input)
         {
